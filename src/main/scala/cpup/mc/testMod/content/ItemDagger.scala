@@ -10,9 +10,7 @@ import net.minecraft.init.Items
 class ItemDagger extends ItemSword(ToolMaterial.EMERALD) with TItemBase {
 	override def getItemAttributeModifiers = {
 		val attributes = HashMultimap.create.asInstanceOf[Multimap[String, AttributeModifier]]
-		attributes.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName, new AttributeModifier(Item.field_111210_e, "Weapon modifier", 12, 0))
+		attributes.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName, new AttributeModifier(Item.field_111210_e, "Weapon modifier", 7, 0))
 		attributes
 	}
-
-	override def getIconFromDamage(dmg: Int) = Items.iron_sword.getIconFromDamage(0)
 }
