@@ -28,6 +28,7 @@ class SwordBowRenderer extends IItemRenderer {
 	def renderItem(renderType: ItemRenderType, stack: ItemStack, data: Object*) {
 		val texManager = Minecraft.getMinecraft.getTextureManager
 		val livingEntity = data(1).asInstanceOf[EntityLivingBase]
+		val item = stack.getItem.asInstanceOf[ItemSwordBow]
 
 		var dur = 0
 		if(livingEntity.isInstanceOf[EntityPlayer]) {
@@ -40,7 +41,7 @@ class SwordBowRenderer extends IItemRenderer {
 
 		GL11.glPushMatrix
 		val icon = if(dur > 0) {
-			Items.bow.getItemIconForUseDuration(if(dur >= 13) {
+			item.getItemIconForUseDuration(if(dur >= 13) {
 				2
 			} else if(dur > 7) {
 				1
@@ -48,7 +49,7 @@ class SwordBowRenderer extends IItemRenderer {
 				0
 			})
 		} else {
-			Items.bow.getIconIndex(stack)
+			item.getIconIndex(stack)
 		}
 		if(icon == null) {
 			GL11.glPopMatrix

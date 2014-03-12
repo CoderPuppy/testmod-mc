@@ -14,6 +14,8 @@ import net.minecraft.entity.{Entity, EntityLivingBase, SharedMonsterAttributes}
 import net.minecraft.entity.ai.attributes.AttributeModifier
 import cpup.mc.lib.util.ItemUtil
 import cpup.lib.Util
+import cpw.mods.fml.relauncher.{SideOnly, Side}
+import net.minecraft.util.IIcon
 
 class ItemSwordBow extends ItemSword(Item.ToolMaterial.IRON) with TItemBase {
 	setMaxDamage(600)
@@ -204,5 +206,8 @@ class ItemSwordBow extends ItemSword(Item.ToolMaterial.IRON) with TItemBase {
 			}
 		}
 	}
+
+	@SideOnly(Side.CLIENT)
+	def getItemIconForUseDuration(par1: Int) = Items.bow.getItemIconForUseDuration(par1)
 	//end Bow\\
 }
