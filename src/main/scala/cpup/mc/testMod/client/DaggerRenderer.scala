@@ -25,7 +25,6 @@ class DaggerRenderer extends IItemRenderer {
 	@Override
 	def renderItem(renderType: ItemRenderType, stack: ItemStack, data: Object*) {
 		val texManager = Minecraft.getMinecraft.getTextureManager
-		val livingEntity = data(1).asInstanceOf[EntityLivingBase]
 		val item = stack.getItem.asInstanceOf[ItemDagger]
 
 		GL11.glPushMatrix
