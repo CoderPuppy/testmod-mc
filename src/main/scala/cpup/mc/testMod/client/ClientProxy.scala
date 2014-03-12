@@ -6,5 +6,6 @@ import net.minecraftforge.client.MinecraftForgeClient
 class ClientProxy extends CommonProxy {
 	override def registerRenderers {
 		MinecraftForgeClient.registerItemRenderer(mod.content.items("swordBow"), new SwordBowRenderer)
+		MinecraftForgeClient.registerItemRenderer(mod.content.items("dagger"), new DaggerRenderer)
 	}
 }
