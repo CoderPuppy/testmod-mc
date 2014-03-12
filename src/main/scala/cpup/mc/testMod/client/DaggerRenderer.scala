@@ -47,6 +47,11 @@ class DaggerRenderer extends IItemRenderer {
 
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL)
 
+		if(renderType == ItemRenderType.EQUIPPED) {
+			GL11.glRotated(5, 1, 0, 0)
+			GL11.glTranslated(0.6, -0.5, 0)
+		}
+
 		ItemRenderer.renderItemIn2D(tessellator, maxU, minV, minU, maxV, icon.getIconWidth, icon.getIconHeight, 0.0625F)
 
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL)
