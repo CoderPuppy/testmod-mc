@@ -10,6 +10,8 @@ import net.minecraft.client.renderer.texture.{TextureManager, TextureUtil}
 import net.minecraft.client.renderer.{ItemRenderer, OpenGlHelper, Tessellator}
 import net.minecraft.client.Minecraft
 import net.minecraft.entity.EntityLivingBase
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.init.Items
 
 class SwordBowRenderer extends IItemRenderer {
 	@Override
@@ -27,8 +29,27 @@ class SwordBowRenderer extends IItemRenderer {
 		val texManager = Minecraft.getMinecraft.getTextureManager
 		val livingEntity = data(1).asInstanceOf[EntityLivingBase]
 
+		var dur = 0
+		if(livingEntity.isInstanceOf[EntityPlayer]) {
+			val me = livingEntity.asInstanceOf[EntityPlayer]
+
+			if(me.getItemInUse == stack) {
+				dur = me.getItemInUseDuration
+			}
+		}
+
 		GL11.glPushMatrix
-		val icon = livingEntity.getItemIcon(stack, 0)
+		val icon = if(dur > 0) {
+			Items.bow.getItemIconForUseDuration(if(dur >= 13) {
+				2
+			} else if(dur > 7) {
+				1
+			} else {
+				0
+			})
+		} else {
+			Items.bow.getIconIndex(stack)
+		}
 		if(icon == null) {
 			GL11.glPopMatrix
 			return
@@ -47,12 +68,21 @@ class SwordBowRenderer extends IItemRenderer {
 		val f5: Float = 0.3F
 
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL)
+
 //		GL11.glTranslatef(-f4, -f5, 0.0F)
+
 //		val f6: Float = 1.5F
 //		GL11.glScalef(f6, f6, f6)
 //		GL11.glRotatef(50.0F, 0.0F, 1.0F, 0.0F)
 //		GL11.glRotatef(335.0F, 0.0F, 0.0F, 1.0F)
 //		GL11.glTranslatef(-0.9375F, -0.0625F, 0.0F)
+
+		if(dur > 0) {
+			GL11.glRotated(90, 1, 0, 0)
+			GL11.glRotated(30, 0, 1, 0)
+			GL11.glRotated(45, 0, 0, -1)
+//			GL11.glTranslated(0, 0, 1)
+		}
 
 		ItemRenderer.renderItemIn2D(tessellator, f1, f2, f, f3, icon.getIconWidth, icon.getIconHeight, 0.0625F)
 
