@@ -79,9 +79,18 @@ class SwordBowRenderer extends IItemRenderer {
 
 		if(dur > 0) {
 			GL11.glRotated(90, 1, 0, 0)
-			GL11.glRotated(30, 0, 1, 0)
+			GL11.glRotated(35, 0, 1, 0)
 			GL11.glRotated(45, 0, 0, -1)
-//			GL11.glTranslated(0, 0, 1)
+			GL11.glTranslated(0, 0, 0.1)
+			//GL11.glTranslated(0, 0, 0)
+
+			if(renderType == ItemRenderType.EQUIPPED_FIRST_PERSON) {
+				GL11.glRotated(10, -1, 0, 0)
+				GL11.glTranslated(0.3, 0, 0)
+				GL11.glTranslated(0, -0.3, 0)
+				GL11.glTranslated(0, 0, 0.15)
+				GL11.glRotated(7, 0, 0, -1)
+			}
 		}
 
 		ItemRenderer.renderItemIn2D(tessellator, f1, f2, f, f3, icon.getIconWidth, icon.getIconHeight, 0.0625F)
