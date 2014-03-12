@@ -34,7 +34,7 @@ class ItemSwordBow extends ItemSword(Item.ToolMaterial.IRON) with TItemBase {
 			return
 		}
 
-		if(me.getRNG.nextInt(10) < 10 - EnchantmentHelper.getEnchantmentLevel(Enchantment.unbreaking.effectId, stack)) {
+		if(me.getRNG.nextInt(4) > EnchantmentHelper.getEnchantmentLevel(Enchantment.unbreaking.effectId, stack)) {
 			val compound = ItemUtil.compound(stack)
 			val damage = Util.checkNull(compound.getInteger("damage"), (dmg: Int) => dmg, 0)
 			compound.setInteger("damage", damage + 1)
