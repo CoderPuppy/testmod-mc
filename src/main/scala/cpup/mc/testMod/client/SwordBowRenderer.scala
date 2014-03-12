@@ -60,22 +60,12 @@ class SwordBowRenderer extends IItemRenderer {
 
 		val tessellator: Tessellator = Tessellator.instance
 
-		val f: Float = icon.getMinU
-		val f1: Float = icon.getMaxU
-		val f2: Float = icon.getMinV
-		val f3: Float = icon.getMaxV
-		val f4: Float = 0.0F
-		val f5: Float = 0.3F
+		val minU: Float = icon.getMinU
+		val maxU: Float = icon.getMaxU
+		val minV: Float = icon.getMinV
+		val maxV: Float = icon.getMaxV
 
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL)
-
-//		GL11.glTranslatef(-f4, -f5, 0.0F)
-
-//		val f6: Float = 1.5F
-//		GL11.glScalef(f6, f6, f6)
-//		GL11.glRotatef(50.0F, 0.0F, 1.0F, 0.0F)
-//		GL11.glRotatef(335.0F, 0.0F, 0.0F, 1.0F)
-//		GL11.glTranslatef(-0.9375F, -0.0625F, 0.0F)
 
 		if(dur > 0) {
 			GL11.glRotated(90, 1, 0, 0)
@@ -93,7 +83,7 @@ class SwordBowRenderer extends IItemRenderer {
 			}
 		}
 
-		ItemRenderer.renderItemIn2D(tessellator, f1, f2, f, f3, icon.getIconWidth, icon.getIconHeight, 0.0625F)
+		ItemRenderer.renderItemIn2D(tessellator, maxU, minV, minU, maxV, icon.getIconWidth, icon.getIconHeight, 0.0625F)
 
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL)
 		texManager.bindTexture(texManager.getResourceLocation(stack.getItemSpriteNumber))
