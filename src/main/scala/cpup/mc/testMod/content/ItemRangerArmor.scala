@@ -1,6 +1,6 @@
 package cpup.mc.testMod.content
 
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.item.{ItemArmor, ItemStack, Item}
 import net.minecraftforge.common.ISpecialArmor
 import net.minecraft.entity.{Entity, EntityLivingBase}
 import net.minecraft.util.DamageSource
@@ -8,7 +8,7 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.common.ISpecialArmor.ArmorProperties
 import net.minecraft.item.ItemArmor.ArmorMaterial
 
-class ItemRangerArmor(val armorType: Int) extends Item with TItemBase with ISpecialArmor {
+class ItemRangerArmor(armorType: Int) extends ItemArmor(ArmorMaterial.CHAIN, 0, armorType) with TItemBase with ISpecialArmor {
 	override def isValidArmor(stack: ItemStack, armorType: Int, entity: Entity) = armorType == this.armorType
 
 	def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, dmg: Int, slot: Int) {}
