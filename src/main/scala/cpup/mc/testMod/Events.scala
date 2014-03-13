@@ -4,6 +4,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent
 import cpup.mc.testMod.content.ItemRangerArmor
 import net.minecraft.entity.EntityLiving
+import net.minecraft.item.ItemStack
 
 class Events {
 	@SubscribeEvent
@@ -12,35 +13,49 @@ class Events {
 			return
 		}
 
+		val cowl = e.target.getEquipmentInSlot(4) match {
+			case stack: ItemStack => stack.getItem.isInstanceOf[ItemRangerArmor]
+			case null => false
+		}
+		val cloak = e.target.getEquipmentInSlot(3) match {
+			case stack: ItemStack => stack.getItem.isInstanceOf[ItemRangerArmor]
+			case null => false
+		}
+		val boots = e.target.getEquipmentInSlot(1) match {
+			case stack: ItemStack => stack.getItem.isInstanceOf[ItemRangerArmor]
+			case null => false
+		}
+
+		val sprinting = e.target.isSprinting
+		val sneaking = e.target.isSneaking
 		val dist = e.target.getDistanceSqToEntity(e.entityLiving)
-		val chest = e.target.getEquipmentInSlot(3)
+		val motionY = Math.abs(e.target.motionY)
 
-//		println(e.target.motionX, e.target.motionY, e.target.motionZ)
-//		println(dist)
-//		println(e.entityLiving.getLastAttacker)
+//		println(sprinting, sneaking)
+//		println(cowl, cloak, boots)
+//		println(motionY, dist)
 
-		if(chest == null) {
-//			println("no chestplate")
-			return
-		}
-
-		if(!chest.getItem.isInstanceOf[ItemRangerArmor]) {
-//			println("not a cloak")
-			return
-		}
-
-//		if(e.target.getLastAttacker == e.entityLiving && dist < 10) {
-////			println("attacked")
-//			return
-//		}
-
-		if(Math.abs(e.target.motionX) > 0.1 || Math.abs(e.target.motionZ) > 0.1 || Math.abs(e.target.motionY) >= 1) {
-//			println("moving")
+		if(!cloak || !cowl) {
 			return
 		}
 
 		if(dist <= 1) {
-//			println("too close")
+			println("far too close")
+			return
+		}
+
+		if(dist <= 10 && !(boots || sneaking)) {
+			println("not sneaking")
+			return
+		}
+
+		if(dist <= 40 && !boots && sprinting) {
+			println("sprinting")
+			return
+		}
+
+		if(dist <= 40 && !boots && motionY > 1) {
+			println("fell")
 			return
 		}
 
