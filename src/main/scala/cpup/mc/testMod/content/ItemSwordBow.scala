@@ -91,14 +91,15 @@ class ItemSwordBow extends ItemSword(Item.ToolMaterial.IRON) with TItemBase {
 	override def onItemRightClick(stack: ItemStack, world: World, player: EntityPlayer): ItemStack = {
 		val newStack = stack.copy
 
-		println("sneaking", player.isSneaking)
-		println("isBow", isBow(stack))
+//		println("sneaking", player.isSneaking)
+//		println("isBow", isBow(stack))
 
 		if(player.isSneaking) {
 			setIsBow(newStack, !isBow(stack))
-			println("isBow", isBow(newStack))
+//			println("isBow", isBow(newStack))
 		} else {
 			if(isBow(stack)) {
+//				println("onItemRightClick", player)
 				val event = new ArrowNockEvent(player, stack)
 
 				MinecraftForge.EVENT_BUS.post(event)
