@@ -9,7 +9,6 @@ class CommonProxy extends CPupCommonProxy[TTestMod] {
 
 	def registerRenderers {}
 	def registerEvents {
-		println("registering events")
 		MinecraftForge.EVENT_BUS.register(new Events)
 		FMLCommonHandler.instance.bus.register(new Events)
 	}

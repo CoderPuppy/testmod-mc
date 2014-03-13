@@ -2,7 +2,7 @@ package cpup.mc.testMod
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent
-import cpup.mc.testMod.content.ItemCloak
+import cpup.mc.testMod.content.ItemRangerArmor
 import net.minecraft.entity.EntityLiving
 
 class Events {
@@ -20,11 +20,11 @@ class Events {
 //		println(e.entityLiving.getLastAttacker)
 
 		if(chest == null) {
-			println("no chestplate")
+//			println("no chestplate")
 			return
 		}
 
-		if(!chest.getItem.isInstanceOf[ItemCloak]) {
+		if(!chest.getItem.isInstanceOf[ItemRangerArmor]) {
 //			println("not a cloak")
 			return
 		}
