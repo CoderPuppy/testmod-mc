@@ -40,22 +40,22 @@ class Events {
 		}
 
 		if(dist <= 1) {
-			println("far too close")
+//			println("far too close")
 			return
 		}
 
 		if(dist <= 10 && !(boots || sneaking)) {
-			println("not sneaking")
+//			println("not sneaking")
 			return
 		}
 
 		if(dist <= 40 && !boots && sprinting) {
-			println("sprinting")
+//			println("sprinting")
 			return
 		}
 
 		if(dist <= 40 && !boots && motionY > 1) {
-			println("fell")
+//			println("fell")
 			return
 		}
 
