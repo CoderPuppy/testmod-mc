@@ -22,6 +22,7 @@ trait TTestMod extends CPupMod[TRef] {
 	@EventHandler
 	override def init(e: FMLInitializationEvent) {
 		super.init(e)
+		proxy.registerEvents
 		logger.info("FMLInitializationEvent")
 	}
 
