@@ -18,6 +18,6 @@ class ItemRangerArmor(val armorType: Int) extends Item with TItemBase with ISpec
 	}
 
 	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, layer: String) = {
-		mod.ref.modID + ":textures/armors/ranger." + name + "." + layer + ".png"
+		mod.ref.modID + ":textures/armors/ranger." + layer + ".png"
 	}
 }
