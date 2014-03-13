@@ -12,7 +12,9 @@ object Content extends CPupContent[TTestMod] {
 	def mod = TestMod
 
 	override def preInit(e: FMLPreInitializationEvent) {
-		registerItem(new ItemCloak().setName("cloak").setCreativeTab(CreativeTabs.tabCombat).asInstanceOf[TItemBase])
+		registerItem(new ItemRangerArmor(0).setName("cowl").setCreativeTab(CreativeTabs.tabCombat).asInstanceOf[TItemBase])
+		registerItem(new ItemRangerArmor(1).setName("cloak").setCreativeTab(CreativeTabs.tabCombat).asInstanceOf[TItemBase])
+		registerItem(new ItemRangerArmor(3).setName("paddedBoots").setCreativeTab(CreativeTabs.tabCombat).asInstanceOf[TItemBase])
 
 		registerItem(new ItemDagger().setName("dagger").setCreativeTab(CreativeTabs.tabCombat).asInstanceOf[TItemBase])
 

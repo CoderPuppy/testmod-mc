@@ -1,4 +1,6 @@
 item.testmod:swordBow.sword.name=§4§l[Sword]§r  Bow
 item.testmod:swordBow.bow.name= Sword  §4§l[Bow]§r
 item.testmod:dagger.name=Dagger
+item.testmod:cowl.name=Cowl
 item.testmod:cloak.name=Cloak
+item.testmod:paddedBoots=Padded Boots
