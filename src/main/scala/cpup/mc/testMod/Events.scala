@@ -15,8 +15,9 @@ class Events {
 		val dist = e.target.getDistanceSqToEntity(e.entityLiving)
 		val chest = e.target.getEquipmentInSlot(3)
 
-		println(e.target.motionX, e.target.motionY, e.target.motionZ)
-		println(dist)
+//		println(e.target.motionX, e.target.motionY, e.target.motionZ)
+//		println(dist)
+//		println(e.entityLiving.getLastAttacker)
 
 		if(chest == null) {
 			println("no chestplate")
@@ -24,22 +25,22 @@ class Events {
 		}
 
 		if(!chest.getItem.isInstanceOf[ItemCloak]) {
-			println("not a cloak")
+//			println("not a cloak")
 			return
 		}
 
-		if(e.entityLiving.getLastAttacker == e.target && dist < 10) {
-			println("attacked")
-			return
-		}
+//		if(e.target.getLastAttacker == e.entityLiving && dist < 10) {
+////			println("attacked")
+//			return
+//		}
 
 		if(Math.abs(e.target.motionX) > 0.1 || Math.abs(e.target.motionZ) > 0.1 || Math.abs(e.target.motionY) >= 1) {
-			println("moving")
+//			println("moving")
 			return
 		}
 
 		if(dist <= 1) {
-			println("too close")
+//			println("too close")
 			return
 		}
 
