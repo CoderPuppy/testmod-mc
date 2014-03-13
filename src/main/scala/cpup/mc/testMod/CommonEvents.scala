@@ -2,11 +2,13 @@ package cpup.mc.testMod
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent
-import cpup.mc.testMod.content.ItemRangerArmor
+import cpup.mc.testMod.content.{ItemSwordBow, ItemRangerArmor}
 import net.minecraft.entity.EntityLiving
 import net.minecraft.item.ItemStack
+import cpw.mods.fml.common.gameevent.TickEvent.{Phase, PlayerTickEvent}
+import net.minecraft.client.entity.EntityPlayerSP
 
-class Events {
+class CommonEvents {
 	@SubscribeEvent
 	def checkCloak(e: LivingSetAttackTargetEvent) {
 		if(e.target == null) {
@@ -28,7 +30,7 @@ class Events {
 
 		val sprinting = e.target.isSprinting
 		val sneaking = e.target.isSneaking
-		val dist = e.target.getDistanceSqToEntity(e.entityLiving)
+		val dist = e.target.getDistanceToEntity(e.entityLiving)
 		val motionY = Math.abs(e.target.motionY)
 
 //		println(sprinting, sneaking)
