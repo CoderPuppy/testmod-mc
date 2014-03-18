@@ -26,7 +26,7 @@ class ItemSwordBow extends ItemSword(Item.ToolMaterial.IRON) with TItemBase {
 	override def getItemEnchantability = 22
 
 	override def getDisplayDamage(stack: ItemStack) = {
-		Util.checkNull(ItemUtil.compound(stack).getInteger("damage"), (dmg: Int) => dmg, 0)
+		Util.checkNull(ItemUtil.compound(stack).getInteger("damage"), 0)
 	}
 
 	protected def damageItem(stack: ItemStack, me: EntityLivingBase) {
@@ -36,7 +36,7 @@ class ItemSwordBow extends ItemSword(Item.ToolMaterial.IRON) with TItemBase {
 
 		if(me.getRNG.nextInt(4) > EnchantmentHelper.getEnchantmentLevel(Enchantment.unbreaking.effectId, stack)) {
 			val compound = ItemUtil.compound(stack)
-			val damage = Util.checkNull(compound.getInteger("damage"), (dmg: Int) => dmg, 0)
+			val damage = Util.checkNull(compound.getInteger("damage"), 0)
 			compound.setInteger("damage", damage + 1)
 
 			if(damage >= getMaxDamage(stack)) {
