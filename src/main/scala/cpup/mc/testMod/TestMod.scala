@@ -5,8 +5,9 @@ import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 import cpup.mc.lib.CPupMod
 import cpup.mc.testMod.content.Content
+import cpup.mc.lib.network.CPupMessage
 
-trait TTestMod extends CPupMod[TRef] {
+trait TTestMod extends CPupMod[TRef, CPupMessage] {
 	@SidedProxy(clientSide = "cpup.mc.testMod.client.ClientProxy", serverSide = "cpup.mc.testMod.CommonProxy")
 	var proxy: CommonProxy = null
 	def ref = Ref
