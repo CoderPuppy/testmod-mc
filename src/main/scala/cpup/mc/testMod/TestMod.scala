@@ -10,7 +10,7 @@ trait TTestMod extends CPupMod[TRef] {
 	@SidedProxy(clientSide = "cpup.mc.testMod.client.ClientProxy", serverSide = "cpup.mc.testMod.CommonProxy")
 	var proxy: CommonProxy = null
 	def ref = Ref
-	def content = Content
+	override def content = Content
 
 	@EventHandler
 	override def preInit(e: FMLPreInitializationEvent) {
