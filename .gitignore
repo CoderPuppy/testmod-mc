@@ -1,0 +1,6 @@
+.gradle/
+build/
+eclipse/
+testmod-mc.iml
+testmod-mc.ipr
+testmod-mc.iws
