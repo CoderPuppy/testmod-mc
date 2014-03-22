@@ -7,7 +7,7 @@ import cpup.mc.lib.CPupMod
 import cpup.mc.testMod.content.Content
 import cpup.mc.lib.network.CPupMessage
 
-trait TTestMod extends CPupMod[TRef, CPupMessage] {
+trait TTestMod extends CPupMod[TRef] {
 	@SidedProxy(clientSide = "cpup.mc.testMod.client.ClientProxy", serverSide = "cpup.mc.testMod.CommonProxy")
 	var proxy: CommonProxy = null
 	def ref = Ref
