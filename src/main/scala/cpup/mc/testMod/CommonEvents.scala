@@ -61,7 +61,7 @@ class CommonEvents {
 			return
 		}
 
-		e.entityLiving.setRevengeTarget(null)
+//		e.entityLiving.setRevengeTarget(null)
 
 		if(e.entityLiving.isInstanceOf[EntityLiving]) {
 			e.entityLiving.asInstanceOf[EntityLiving].setAttackTarget(null)
