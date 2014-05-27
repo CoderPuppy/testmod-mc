@@ -22,7 +22,7 @@ class ItemRangerArmor(armorType: Int) extends ItemArmor(ArmorMaterial.CHAIN, 0, 
 	)
 
 	def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, dmg: Int, slot: Int) {
-		if(armorType != 3 || source == DamageSource.fall) {
+		if(source != DamageSource.fall) {
 			// give the wearer slowness and weakness (stunning)
 			// 40 ticks is 2 seconds
 			entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId, 40, 3))
@@ -45,6 +45,6 @@ class ItemRangerArmor(armorType: Int) extends ItemArmor(ArmorMaterial.CHAIN, 0, 
 
 	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, layer: String) = {
 		mod.logger.debug("ranger armor: {} - {}", slot, layer)
-		s"${mod.ref.modID}:textures/armors/ranger.${if(slot == 2) 2 else 1}.${if(layer == null) "" else s".$layer"}.png"
+		s"${mod.ref.modID}:textures/armors/ranger.${if(slot == 2) 2 else 1}${if(layer == null) "" else s".$layer"}.png"
 	}
 }
