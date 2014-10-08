@@ -57,7 +57,7 @@ class SwordBowRenderer extends IItemRenderer {
 		}
 
 		texManager.bindTexture(texManager.getResourceLocation(stack.getItemSpriteNumber))
-		TextureUtil.func_147950_a(false, false)
+//		TextureUtil.func_147950_a(false, false)
 
 		val tessellator: Tessellator = Tessellator.instance
 
